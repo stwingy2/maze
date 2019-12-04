@@ -1,6 +1,6 @@
 const { Engine, Render, Runner, World, Bodies, Body } = Matter;
 
-const cells = 3;
+const cells = 10;
 
 const width = 600;
 
@@ -11,7 +11,7 @@ const unitLength = width / cells;
 const engine = Engine.create();
 
 const { world } = engine;
-
+engine.world.gravity.y = 0;
 const render = Render.create({
 	element: document.body,
 
