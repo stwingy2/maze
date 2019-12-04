@@ -181,3 +181,17 @@ World.add(world, goal);
 
 const ball = Bodies.circle(unitLength / 2, unitLength / 2, unitLength / 4);
 World.add(world, ball);
+document.addEventListener('keydown', (e) => {
+	if (e.keyCode === 87) {
+		console.log('up');
+	}
+	if (e.keyCode === 68) {
+		console.log('right');
+	}
+	if (e.keyCode === 83) {
+		console.log('down');
+	}
+	if (e.keyCode === 65) {
+		console.log('left');
+	}
+});
