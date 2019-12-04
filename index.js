@@ -198,3 +198,4 @@ document.addEventListener('keydown', (e) => {
 		Body.setVelocity(ball, { x: x - 5, y });
 	}
 });
+console.log('hi');
