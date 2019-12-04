@@ -33,7 +33,7 @@ Runner.run(Runner.create(), engine);
 // Walls
 
 const walls = [
-	Bodies.rectangle(width / 2, 0, width, 2, { isStatic: true }),
+	Bodies.rectangle(width / 2, 0, width, 2, { isStatic: true, label: 'topwall' }),
 
 	Bodies.rectangle(width / 2, height, width, 2, { isStatic: true }),
 
@@ -146,7 +146,8 @@ horizontals.forEach((row, rowIndex) => {
 			unitLength,
 			4,
 			{
-				isStatic: true
+				isStatic: true,
+				label: 'wall'
 			}
 		);
 
@@ -166,7 +167,8 @@ verticals.forEach((row, rowIndex) => {
 			4,
 			unitLength,
 			{
-				isStatic: true
+				isStatic: true,
+				label: 'wall'
 			}
 		);
 
@@ -205,6 +207,13 @@ Events.on(engine, 'collisionStart', (event) => {
 		const labels = [ 'ball', 'goal' ];
 		if (labels.includes(collision.bodyA.label) && labels.includes(collision.bodyB.label)) {
 			console.log('you won');
+			world.gravity.y = 1;
+			world.bodies.forEach((body) => {
+				if (body.label === 'wall') {
+					Body.setStatic(body, false);
+				}
+			});
 		}
 	});
 });
+console.log(world.bodies);
