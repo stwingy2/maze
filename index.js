@@ -1,7 +1,16 @@
 const { Engine, Render, Runner, World, Bodies, Body, Events } = Matter;
-
-const cellsH = 4;
-const cellsY = 3;
+window.addEventListener(
+	'keydown',
+	function(e) {
+		// space and arrow keys
+		if ([ 32, 37, 38, 39, 40 ].indexOf(e.keyCode) > -1) {
+			e.preventDefault();
+		}
+	},
+	false
+);
+const cellsH = 14;
+const cellsY = 10;
 
 const width = window.innerWidth;
 
@@ -199,16 +208,16 @@ World.add(world, ball);
 document.addEventListener('keydown', (e) => {
 	const { x, y } = ball.velocity;
 
-	if (e.keyCode === 87) {
+	if (e.keyCode === 38) {
 		Body.setVelocity(ball, { x, y: y - 1 });
 	}
-	if (e.keyCode === 68) {
+	if (e.keyCode === 39) {
 		Body.setVelocity(ball, { x: x + 1, y });
 	}
-	if (e.keyCode === 83) {
+	if (e.keyCode === 40) {
 		Body.setVelocity(ball, { x, y: y + 1 });
 	}
-	if (e.keyCode === 65) {
+	if (e.keyCode === 37) {
 		Body.setVelocity(ball, { x: x - 1, y });
 	}
 });
@@ -217,7 +226,12 @@ Events.on(engine, 'collisionStart', (event) => {
 	event.pairs.forEach((collision) => {
 		const labels = [ 'ball', 'goal' ];
 		if (labels.includes(collision.bodyA.label) && labels.includes(collision.bodyB.label)) {
-			document.querySelector('.winner').classList.remove('hidden');
+			let h = document.querySelector('.winner');
+			h.classList.remove('hidden');
+			let btn = document.querySelector('button');
+			btn.addEventListener('click', () => {
+				window.location.reload(true);
+			});
 			world.gravity.y = 1;
 			world.bodies.forEach((body) => {
 				if (body.label === 'wall') {
