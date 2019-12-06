@@ -149,7 +149,10 @@ horizontals.forEach((row, rowIndex) => {
 			4,
 			{
 				isStatic: true,
-				label: 'wall'
+				label: 'wall',
+				render: {
+					fillStyle: 'red'
+				}
 			}
 		);
 
@@ -170,7 +173,10 @@ verticals.forEach((row, rowIndex) => {
 			unitLengthY,
 			{
 				isStatic: true,
-				label: 'wall'
+				label: 'wall',
+				render: {
+					fillStyle: 'red'
+				}
 			}
 		);
 
@@ -180,7 +186,10 @@ verticals.forEach((row, rowIndex) => {
 
 const goal = Bodies.rectangle(width - unitLengthX / 2, height - unitLengthY / 2, unitLengthX * 0.7, unitLengthY * 0.7, {
 	isStatic: true,
-	label: 'goal'
+	label: 'goal',
+	render: {
+		fillStyle: 'green'
+	}
 });
 World.add(world, goal);
 const ballRadius = Math.min(unitLengthX, unitLengthY) / 4;
@@ -191,16 +200,16 @@ document.addEventListener('keydown', (e) => {
 	const { x, y } = ball.velocity;
 
 	if (e.keyCode === 87) {
-		Body.setVelocity(ball, { x, y: y - 5 });
+		Body.setVelocity(ball, { x, y: y - 1 });
 	}
 	if (e.keyCode === 68) {
-		Body.setVelocity(ball, { x: x + 5, y });
+		Body.setVelocity(ball, { x: x + 1, y });
 	}
 	if (e.keyCode === 83) {
-		Body.setVelocity(ball, { x, y: y + 5 });
+		Body.setVelocity(ball, { x, y: y + 1 });
 	}
 	if (e.keyCode === 65) {
-		Body.setVelocity(ball, { x: x - 5, y });
+		Body.setVelocity(ball, { x: x - 1, y });
 	}
 });
 
