@@ -15,14 +15,33 @@
     <title>Document</title>
     <style>
             body{
-                margin:0;]
+                margin:0;
             }
-            
+           
+            h1{
+                font-size: large;
+                color: #FFF;
+            }
+            .winner{
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                position:absolute;
+                z-index: 1;
+                height:100vh;
+                width:100vw;
+            }
+            .hidden{
+                display:none;
+            }
         </style>
 
 </head>
 
 <body>
+<div class="winner hidden">
+    <h1>You Win</h1>
+</div>
 
     <script src="index.js"></script>
 
