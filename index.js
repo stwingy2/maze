@@ -20,7 +20,7 @@ const render = Render.create({
 	engine: engine,
 
 	options: {
-		wireframes: true,
+		wireframes: false,
 
 		width,
 
